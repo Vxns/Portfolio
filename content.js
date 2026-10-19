@@ -4,30 +4,22 @@ const SITE = {
   vorname: "Jean",
   nachname: "Kandler",
   rolle: "Student Elektrotechnik (B.Eng.)",
-  schwerpunkt: "Gebäudeautomation",
+  schwerpunkt: "Automatisierungstechnik",
   hochschule: "Technische Hochschule Georg Agricola, Bochum",
 
  
   status: "Offen für Werkstudentenstellen",
   verfuegbar: "Zum nächstmöglichen Zeitpunkt (unter Berücksichtigung meiner aktuellen Kündigungsfrist)",
 
-  // Kurzer Pitch unter dem Namen (2–3 Sätze, konkret > blumig)
   pitch:
     "Mich interessiert, wie aus Code und Elektronik ein funktionierendes System wird. Im Elektrotechnikstudium bringe ich Sensoren zum Messen, programmiere Mikrocontroller und FPGAs und vernetze Gebäudetechnik. Jetzt möchte ich meine praktische Erfahrung in echte Projekte einbringen und als Werkstudent weiter ausbauen.",
 
   foto: "images/portrait.jpg",        // optional, Hochformat oder quadratisch
   lebenslauf: "images/lebenslauf.pdf",// optional: PDF in images/ legen, sonst Button leer lassen: ""
 
-
-  fakten: [
-    { wert: "14+",  label: "Projekte gebaut" },
-    { wert: "2",    label: "Sprachen" },
-    { wert: "STM32 · ESP32 · FPGA", label: "Plattformen" },
-  ],
-
   ueberMich: [
     "Als ausgebildeter IT-Assistent und Elektrotechnikstudent verbinde ich Programmierung mit Elektronik und Gebäudeautomation. Mich reizt, Systeme zu verstehen, selbst umzusetzen und zum Laufen zu bringen. Als Werkstudent möchte ich diese Erfahrung einbringen und Neues dazulernen.",
-    "Auch privat gebe ich Technik gern meinen eigenen Touch z.Bmit individuellen Themes, eigenen Funktionen, verspielten Webseiten oder kleinen Spaßprojekten. Ich probiere gern aus, was sich verändern, erweitern und selbst gestalten lässt..",
+    "Auch privat gebe ich Technik gern meinen eigenen Touch z.B mit individuellen Themes, eigenen Funktionen, verspielten Webseiten oder kleinen Spaßprojekten. Ich probiere gern aus, was sich verändern, erweitern und selbst gestalten lässt..",
   ],
 
   sprachen: [
@@ -51,7 +43,7 @@ const WERDEGANG = [
     zeitraum: "Aktuell",             // z. B. "2022 – heute"
     titel: "B.Eng. Elektrotechnik",
     ort: "Technische Hochschule Georg Agricola",
-    text: "Schwerpunkt Embedded Systems. Relevante Module: Regelungstechnik, Digitaltechnik, Leistungselektronik, Signalverarbeitung.",
+    text: "Schwerpunkt Gebäudeautomation. Relevante Module: Elektrechnik 1 & 2,Regelungstechnik, Digitaltechnik 1 & 2, Automatisierungstechnik, Programmierung, Mikroprozessortechnik, Gebäudeautomation.",
   },
   {
     typ: "Abgeschlossene Berufsausbildung",
@@ -236,9 +228,13 @@ const LABOR = [
 
 /* ---------------- KENNTNISSE ---------------- */
 const KENNTNISSE = [
-  { gruppe: "Programmieren", items: ["Embedded C", "C++", "Java", "MATLAB", "VHDL", "JavaScript"] },
-  { gruppe: "Entwurf & Simulation", items: ["LTspice", "Schaltungsentwurf"] },
-  { gruppe: "Plattformen", items: ["STM32", "ESP32", "FPGA"] },
-  { gruppe: "Theorie", items: ["Regelungstechnik", "Signalverarbeitung", "Leistungselektronik"] },
-  { gruppe: "Labor", items: ["Oszilloskop", "Netzteil & Multimeter"] },
+  { gruppe: "Programmierung & Web", items: ["C / Embedded C", "C++", "Java", "JavaScript", "HTML / CSS", "Python", "SQL"] },
+  { gruppe: "Entwurf & Simulation", items: ["VHDL", "Quartus II", "LTspice", "MATLAB", "Simulink", "µC51 IDE"] },
+  { gruppe: "Hardware & Systeme", items: ["8051-Mikrocontroller", "Arduino Uno", "Raspberry Pi", "FPGA / DE2-115", "Linux" , "ESP-32", "Windows"] },
+  { gruppe: "Gebäudeautomation & Schnittstellen", items: ["KNX / ETS", "DALI", "digitalSTROM", "SPI", "Serielle Kommunikation"] },
+  { gruppe: "Messtechnik & Labor", items: ["Oszilloskop", "Multimeter", "Labornetzteil", "Messwerterfassung", "AD-/DA-Wandlung", "Schaltungsaufbau"] },
+  { gruppe: "IT", items: ["Datenbanken", "Datenkommunikation", "Betriebssysteme & Netzwerke", "PC-Aufbau & Fehlersuche"] },
+  { gruppe: "Fachliche Grundlagen", items: ["Regelungstechnik", "Automatisierungstechnik","Digitaltechnik", "Elektrische Maschinen", "IT-Sicherheit", "Elektronik", "Programmierung"] },
+  { gruppe: "Office & Design", items: ["Microsoft Office", "LibreOffice", "Krita"] },
+  { gruppe: "Private kreative Projekte", items: ["Blender", "Luau", "FL-Studio"] },
 ];
