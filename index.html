@@ -469,7 +469,7 @@ $("tl").innerHTML=WERDEGANG.map(w=>
 $("skills").innerHTML=KENNTNISSE.map(g=>'<div class="sk rv"><h3>'+esc(g.gruppe)+'</h3><div class="tags">'+g.items.map(t=>'<span class="tag">'+esc(t)+"</span>").join("")+"</div></div>").join("");
 
 /* ---- Kontakt ---- */
-$("kp").textContent="Ich freue mich über Anfragen.Werkstudentenstellen – am schnellsten per E-Mail.";
+$("kp").textContent="Ich freue mich über Anfragen. Werkstudentenstellen – am schnellsten per E-Mail.";
 $("kactions").innerHTML='<a class="btn primary" href="'+mail+'">'+esc(S.kontakt.mail)+'</a>'+
  S.kontakt.links.filter(l=>l.href).map(l=>'<a class="btn ghost" target="_blank" rel="noreferrer" href="'+esc(l.href)+'">'+esc(l.label)+' ↗</a>').join("");
 $("loc").textContent=S.kontakt.standort?("◉ "+S.kontakt.standort):"";
