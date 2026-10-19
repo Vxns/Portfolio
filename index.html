@@ -70,14 +70,14 @@ header.nav{position:sticky;top:0;z-index:30;background:color-mix(in oklab,var(--
   linear-gradient(90deg,oklch(60% .1 264 / .07) 1px,transparent 1px) 0 0/20px 20px,var(--dark)}
 .pframe .ph svg{position:absolute;inset:0;width:100%;height:100%}
 .tr{fill:none;stroke:oklch(42% .1 264);stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
-.pulse{fill:none;stroke:oklch(86% .2 150);stroke-width:3.2;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:8 92;stroke-dashoffset:8;animation:flow var(--d,3s) linear infinite var(--dl,0s);filter:drop-shadow(0 0 4px oklch(86% .2 150))}
+.pulse{fill:none;stroke:oklch(52.016% 0.25648 309.866);stroke-width:3.2;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:8 92;stroke-dashoffset:8;animation:flow var(--d,3s) linear infinite var(--dl,0s);filter:drop-shadow(0 0 10px oklch(69.282% 0.1658 332.151))}
 @keyframes flow{from{stroke-dashoffset:8}to{stroke-dashoffset:-100}}
 .pad{fill:var(--dark);stroke:oklch(60% .12 264);stroke-width:2}
 .pin{fill:oklch(78% .03 262)}
 .die{animation:die 3.5s ease-in-out infinite}
-@keyframes die{50%{stroke:oklch(86% .2 150);filter:drop-shadow(0 0 6px oklch(86% .2 150 / .8))}}
+@keyframes die{50%{stroke:oklch(52.016% 0.25648 309.866);filter:drop-shadow(0 0 6px oklch(52.016% 0.25648 309.866))}}
 .pcap{position:absolute;left:0;right:0;bottom:0;padding:34px 20px 16px;background:linear-gradient(transparent,oklch(14% .04 262 / .92));color:#fff;font:500 11px var(--mono);letter-spacing:.08em;display:flex;align-items:center;gap:10px;pointer-events:none}
-.pcap i{width:8px;height:8px;border-radius:50%;background:oklch(86% .2 150);box-shadow:0 0 10px oklch(86% .2 150);animation:blink 1.6s steps(2) infinite}
+.pcap i{width:8px;height:8px;border-radius:50%;background:oklch(52.016% 0.25648 309.866);box-shadow:0 0 10px oklch(52.016% 0.25648 309.866);animation:blink 1.6s steps(2) infinite}
 @keyframes blink{50%{opacity:.25}}
 .chipf{position:absolute;padding:7px 12px;border-radius:10px;background:var(--surface);border:1px solid var(--line);box-shadow:var(--shadow);font:500 12px var(--mono);animation:float 6s ease-in-out infinite}
 .chipf:nth-of-type(1){top:8%;left:-8%}.chipf:nth-of-type(2){bottom:22%;right:-6%;animation-delay:-2s}.chipf:nth-of-type(3){bottom:6%;left:6%;animation-delay:-4s}
@@ -158,9 +158,22 @@ details.lab[open] .plus{transform:rotate(45deg);background:var(--ink);color:#fff
 .skills{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
 @media(max-width:900px){.skills{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:560px){.skills{grid-template-columns:1fr}}
-.sk{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:22px}
-.sk h3{font:600 12px var(--mono);text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin-bottom:14px}
-.sk .tag{background:var(--bg);color:var(--ink);border:1px solid var(--line);font:500 13px var(--body);padding:5px 12px}
+/* Kenntnisse: dezente Farbverläufe und abgestimmte Kategorie-Akzente. */
+.sk{--skill-hue:215;position:relative;isolation:isolate;overflow:hidden;background:linear-gradient(135deg,hsl(var(--skill-hue) 85% 96%) 0%,hsl(var(--skill-hue) 70% 98%) 48%,var(--surface) 100%);border:1px solid hsl(var(--skill-hue) 45% 85%);border-radius:var(--r);padding:24px 22px 22px;box-shadow:0 3px 14px -10px hsl(var(--skill-hue) 55% 35% / .24)}
+.sk::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,hsl(var(--skill-hue) 72% 46%),hsl(var(--skill-hue) 75% 73%) 65%,transparent)}
+.sk:nth-child(9n+1){--skill-hue:195}
+.sk:nth-child(9n+2){--skill-hue:205}
+.sk:nth-child(9n+3){--skill-hue:210}
+.sk:nth-child(9n+4){--skill-hue:220}
+.sk:nth-child(9n+5){--skill-hue:230}
+.sk:nth-child(9n+6){--skill-hue:240}
+.sk:nth-child(9n+7){--skill-hue:250}
+.sk:nth-child(9n+8){--skill-hue:260}
+.sk:nth-child(9n+9){--skill-hue:270}
+.sk h3{font:600 12px var(--mono);text-transform:uppercase;letter-spacing:.07em;color:hsl(var(--skill-hue) 52% 31%);margin-bottom:14px}
+.sk .tag{background:hsl(var(--skill-hue) 65% 98% / .92);color:var(--ink);border:1px solid hsl(var(--skill-hue) 36% 84%);font:500 13px var(--body);padding:5px 12px}
+@media(hover:hover){.sk:hover{border-color:hsl(var(--skill-hue) 52% 67%);box-shadow:0 8px 28px -16px hsl(var(--skill-hue) 55% 35% / .4)}}
+@media print{.sk{background:#fff;box-shadow:none;border-color:var(--line)}.sk::before{display:none}.sk h3{color:var(--ink)}}
 
 /* Kontakt */
 .contact{background:var(--dark);color:#fff;border-radius:32px;padding:clamp(32px,6vw,72px);position:relative;overflow:hidden}
@@ -296,12 +309,12 @@ table.spec td:last-child{font-weight:600}
 </div></section>
 
 <section id="projekte" style="padding-top:0"><div class="wrap">
-  <div class="sec-head"><div class="eyebrow">02 · Projekte</div><h2 class="title">Ausgewählte Arbeiten</h2></div>
+  <div class="sec-head"><div class="eyebrow">02 · Projekte</div><h2 class="title">Ausgewählte Arbeiten (Beispiele)</h2></div>
   <div class="grid" id="projects"></div>
 </div></section>
 
 <section id="labor" style="padding-top:0"><div class="wrap">
-  <div class="sec-head"><div class="eyebrow">03 · Labor</div><h2 class="title">Laborversuche</h2></div>
+  <div class="sec-head"><div class="eyebrow">03 · Labor</div><h2 class="title">Laborversuche (Beispiele)</h2></div>
   <div class="labs" id="labs"></div>
 </div></section>
 
@@ -552,4 +565,3 @@ document.querySelectorAll(".rv").forEach((el,i)=>{el.style.transitionDelay=(i%3)
 </script>
 </body>
 </html>
-
