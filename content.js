@@ -1,32 +1,24 @@
-/* =========================================================
-   HIER PFLEGST DU ALLE INHALTE – index.html musst du nie anfassen.
 
-   Neues Projekt / Laborversuch / Station im Werdegang:
-   Block kopieren, ausfüllen, Seite neu laden.
-   Bilder in den Ordner images/ legen und unter "bilder" eintragen.
-   Was du nicht brauchst, einfach leer lassen ("" oder []).
-   ========================================================= */
 
 const SITE = {
   vorname: "Jean",
   nachname: "Kandler",
   rolle: "Student Elektrotechnik (B.Eng.)",
-  schwerpunkt: "Automatisierungstechnik",
+  schwerpunkt: "Gebäudeautomation",
   hochschule: "Technische Hochschule Georg Agricola, Bochum",
 
-  // Das Wichtigste für Recruiter: wonach suchst du, ab wann?
+ 
   status: "Offen für Werkstudentenstellen",
-  // z. B. "ab März 2027" – leer lassen, wenn du es nicht nennen willst
-  verfuegbar: "",
+  verfuegbar: "Zum nächstmöglichen Zeitpunkt (unter Berücksichtigung meiner aktuellen Kündigungsfrist)",
 
   // Kurzer Pitch unter dem Namen (2–3 Sätze, konkret > blumig)
   pitch:
-    "Ich entwickle Hardware und Firmware von der Schaltung über das PCB-Layout bis zum Code auf dem Mikrocontroller – und messe am Ende selbst nach, ob es funktioniert.",
+    "Mich interessiert, wie aus Code und Elektronik ein funktionierendes System wird. Im Elektrotechnikstudium bringe ich Sensoren zum Messen, programmiere Mikrocontroller und FPGAs und vernetze Gebäudetechnik. Jetzt möchte ich meine praktische Erfahrung in echte Projekte einbringen und als Werkstudent weiter ausbauen.",
 
   foto: "images/portrait.jpg",        // optional, Hochformat oder quadratisch
   lebenslauf: "images/lebenslauf.pdf",// optional: PDF in images/ legen, sonst Button leer lassen: ""
 
-  // 3–4 Fakten neben dem Foto. Notenschnitt kannst du weglassen, wenn du ihn nicht zeigen willst.
+
   fakten: [
     { wert: "14+",  label: "Projekte gebaut" },
     { wert: "2",    label: "Sprachen" },
@@ -34,8 +26,8 @@ const SITE = {
   ],
 
   ueberMich: [
-    "Mich begeistert, wenn aus einem Schaltplan etwas wird, das wirklich läuft: ein Roboter, der der Linie folgt, ein Wandler mit 94 % Wirkungsgrad oder ein Funkknoten, der ein Jahr mit einer Batterie auskommt.",
-    "Neben dem Studium baue ich eigene Projekte, löte und messe im Labor. Ich arbeite gern im Team und erkläre technische Dinge verständlich.",
+    "Als ausgebildeter IT-Assistent und Elektrotechnikstudent verbinde ich Programmierung mit Elektronik und Gebäudeautomation. Mich reizt, Systeme zu verstehen, selbst umzusetzen und zum Laufen zu bringen. Als Werkstudent möchte ich diese Erfahrung einbringen und Neues dazulernen.",
+    "Auch privat gebe ich Technik gern meinen eigenen Touch z.Bmit individuellen Themes, eigenen Funktionen, verspielten Webseiten oder kleinen Spaßprojekten. Ich probiere gern aus, was sich verändern, erweitern und selbst gestalten lässt..",
   ],
 
   sprachen: [
@@ -43,10 +35,9 @@ const SITE = {
   ],
 
   kontakt: {
-    mail: "JeanKandler.bewerbungen@gmail.com",
+    mail: "Jeankandler.bewerbungen@gmail.com",
     links: [
-      { label: "LinkedIn", text: "linkedin.com/in/DEIN-NAME", href: "https://linkedin.com/in/DEIN-NAME" },
-      { label: "GitHub",   text: "github.com/DEIN-NAME",      href: "https://github.com/DEIN-NAME" },
+      { label: "GitHub",   text: "github.com/Vxns",      href: "https://github.com/Vxns" },
     ],
     standort: "Bochum, Deutschland",
   },
