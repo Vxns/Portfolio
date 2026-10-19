@@ -405,7 +405,7 @@ function board(ini){
 }
 const ini=(S.vorname[0]+S.nachname[0]).toUpperCase();
 $("portrait").innerHTML='<div class="pframe" id="pframe">'+board(ini)+'<div class="pcap"><i></i>U1 · '+esc(full.toUpperCase())+'</div></div>'+
-  ["STM32", "MatLab","VHDL"].map(t=>'<span class="chipf">'+t+'</span>').join("");
+  ["C++", "MatLab","VHDL"].map(t=>'<span class="chipf">'+t+'</span>').join("");
 if(S.foto){const im=new Image();im.alt=full;im.onload=()=>{$("pframe").querySelector(".ph").replaceWith(im)};im.src=S.foto;}
 /* 3D-Neigung beim Drüberfahren */
 (function(){
