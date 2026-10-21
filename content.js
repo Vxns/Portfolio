@@ -19,7 +19,7 @@ const SITE = {
 
   ueberMich: [
     "Als ausgebildeter IT-Assistent und Elektrotechnikstudent verbinde ich Programmierung mit Elektronik und Gebäudeautomation. Mich reizt, Systeme zu verstehen, selbst umzusetzen und zum Laufen zu bringen. Als Werkstudent möchte ich diese Erfahrung einbringen und Neues dazulernen.",
-    "Auch privat gebe ich Technik gern meinen eigenen Touch z.B mit individuellen Themes, eigenen Funktionen, verspielten Webseiten oder kleinen Spaßprojekten. Ich probiere gern aus, was sich verändern, erweitern und selbst gestalten lässt..",
+    "Auch privat gebe ich Technik gern meinen eigenen Touch z.B. mit individuellen Themes, eigenen Funktionen, verspielten Webseiten oder kleinen Spaßprojekten. Ich probiere gern aus, was sich verändern, erweitern und selbst gestalten lässt..",
   ],
 
   sprachen: [
@@ -43,7 +43,7 @@ const WERDEGANG = [
     zeitraum: "Aktuell",             // z. B. "2022 – heute"
     titel: "B.Eng. Elektrotechnik",
     ort: "Technische Hochschule Georg Agricola",
-    text: "Schwerpunkt Gebäudeautomation. Relevante Module: Elektrechnik 1 & 2,Regelungstechnik, Digitaltechnik 1 & 2, Automatisierungstechnik, Programmierung, Mikroprozessortechnik, Gebäudeautomation.",
+    text: "Schwerpunkt Gebäudeautomation. Relevante Module: Elektrotechnik 1 & 2,Regelungstechnik, Digitaltechnik 1 & 2, Automatisierungstechnik, Programmierung, Mikroprozessortechnik, Gebäudeautomation.",
   },
   {
     typ: "Abgeschlossene Berufsausbildung",
