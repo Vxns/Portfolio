@@ -14,8 +14,8 @@ const SITE = {
   pitch:
     "Mich interessiert, wie aus Code und Elektronik ein funktionierendes System wird. Im Elektrotechnikstudium bringe ich Sensoren zum Messen, programmiere Mikrocontroller und FPGAs und vernetze Gebäudetechnik. Jetzt möchte ich meine praktische Erfahrung in echte Projekte einbringen und als Werkstudent weiter ausbauen.",
 
-  foto: "images/portrait.jpg",        // optional, Hochformat oder quadratisch
-  lebenslauf: "images/lebenslauf.pdf",// optional: PDF in images/ legen, sonst Button leer lassen: ""
+  //foto: "images/portrait.jpg",        // optional, Hochformat oder quadratisch
+  //lebenslauf: "images/lebenslauf.pdf",// optional: PDF in images/ legen, sonst Button leer lassen: ""
 
   ueberMich: [
     "Als ausgebildeter IT-Assistent und Elektrotechnikstudent verbinde ich Programmierung mit Elektronik und Gebäudeautomation. Mich reizt, Systeme zu verstehen, selbst umzusetzen und zum Laufen zu bringen. Als Werkstudent möchte ich diese Erfahrung einbringen und Neues dazulernen.",
