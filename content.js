@@ -75,7 +75,7 @@ const PROJEKTE = [
     ["Programmiersprache", "C"],
     ["Schwerpunkte", "Ein-/Ausgabe, AD/DA-Wandlung, SPI"]
   ],
-  bilder: [],
+  bilder: [ { src: "images/mikroprozessortechnikundcode.jpg", caption: "Mikroprozessortechnik: Laboraufbau mit Mikrocontroller und Code." } ],
   link: null
 },
 {
@@ -121,6 +121,46 @@ const PROJEKTE = [
 
   ],
   link: null
+},
+{
+  titel: "SPS und Automatisierungstechnik",
+  bereich: "Automatisierungstechnik / SPS",
+  tags: ["SPS", "Automatisierungstechnik", "Sensorik", "PROFIBUS", "HMI", "TIA Portal", "S7-1500", "FUP"],
+  kurz: "Verbindung von Sensorik, Aktorik und pneumatischen sowie hydraulischen Systemen mit einer Siemens SIMATIC S7-1500 und dem TIA Portal.",
+  text: "Im Modul Automatisierungstechnik beschäftigte ich mich mit dem Zusammenspiel von Sensorik, Aktorik sowie pneumatischen und hydraulischen Systemen. In praktischen Laborversuchen arbeitete ich mit der Siemens SIMATIC S7-1500 und dem TIA Portal. Zu den Aufgaben gehörten die Programmierung von Steuerungsfunktionen, die Anbindung eines Barcodescanners über PROFIBUS sowie die Visualisierung und Bedienung einer Förderbandstrecke über ein HMI-Panel. Darüber hinaus untersuchte ich unterschiedliche Sensortypen, darunter PT100-Temperatursensoren, und deren Einsatz in automatisierten Anlagen.",
+  specs: [
+    ["Messgrößen", "Blockade durch Objekt vor der Lichtschranke"],
+    ["Hardware", "Siemens SIMATIC S7-1500"],
+    ["Sensorik", "Lichtschranken"],
+    ["Software", "TIA Portal"],
+    ["Infrastruktur", "PROFIBUS, HMI-Panel"],
+    ["Fernzugriff", "TIA Portal"]
+  ],
+  bilder: [
+    { src: "images/automatisirung laufband.jpg", caption: "Förderbandstrecke mit Sensorik." },
+    { src: "images/sps scanner.jpg", caption: "Programmierung von einem Scanner mittels TIA Portal." }
+  ]
+},
+{
+  titel: "Asynchronmaschinen, doppelt gespeiste Asynchronmaschinen",
+  bereich: "Elektrische Maschinen",
+  tags: ["Asynchronmaschine", "Frequenzumrichter", "Drehmoment", "Drehzahl", "Leistungsregelung"],
+  kurz: "Untersuchung eines KEB-KOMBIVERT-Frequenzumrichters an einer Asynchronmaschine, Analyse von Drehzahl-Drehmoment-Kennlinien und Spannungs- und Stromverläufen.",
+  text: "Im Modul Elektrische Maschinen lag ein Schwerpunkt auf der Untersuchung eines KEB-KOMBIVERT-Frequenzumrichters an einer Asynchronmaschine. Dabei parametrierte ich den Umrichter über die Geräteschnittstelle und einen PC, untersuchte Drehzahl-Drehmoment-Kennlinien sowie den Einfluss der Boost-Einstellung und analysierte Spannungs- und Stromverläufe mit dem Oszilloskop. Weitere Laborversuche behandelten die Wirkungsgradbestimmung nach dem Einzelverlustverfahren, doppelt gespeiste Asynchronmaschinen und verschiedene Schaltgruppen von Drehstromtransformatoren.",
+  specs: [
+    ["Messgrößen", "Drehzahl, Drehmoment, Spannung, Strom"],
+    ["Hardware", "KEB-KOMBIVERT-Frequenzumrichter, Asynchronmaschine"],
+    ["Sensorik", "Drehzahl- und Drehmomentsensoren"],
+    ["Software", "Oszilloskop"],
+    ["Infrastruktur", "Laboraufbau mit Transformator und Frequenzumrichter"],
+    ["Fernzugriff", "Keine"]
+  ],
+  bilder: [
+    { src: "images/drehstromtransformator ganz.jpg", caption: "Drehstromtransformator im Laborbetrieb." },
+    { src: "images/drehstromtransformator.jpg", caption: "Drehstromtransformator im Laborbetrieb." },
+    { src: "images/multimeter.jpg", caption: "Multimeter zur Messung von Spannung und Strom." },
+    { src: "images/frequenzumrichter.jpg", caption: "KEB-KOMBIVERT-Frequenzumrichter." }
+  ]
 },
 {
   titel: "Wetterstation mit Arduino und Raspberry Pi",
