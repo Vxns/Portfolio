@@ -1,0 +1,38 @@
+/* Jean / Jenni · 3D-Projekt-Coverflow */
+.project-carousel{position:relative;min-width:0;isolation:isolate}
+.project-stage{position:relative;height:clamp(440px,49vw,560px);perspective:1250px;perspective-origin:50% 42%;overflow:hidden;touch-action:pan-y;outline-offset:4px}
+.project-stage:focus-visible{outline:2px solid var(--accent);border-radius:18px}
+.project-track{position:absolute;inset:0;transform-style:preserve-3d}
+.project-track>.card{
+ position:absolute;left:50%;top:44%;width:clamp(235px,36%,375px);height:clamp(350px,38vw,430px);
+ margin:0;display:flex;flex-direction:column;overflow:hidden;
+ transform-origin:center center;
+ transform:translate(-50%,-50%) translateX(var(--tx,0px)) translateZ(var(--tz,0px)) rotateY(var(--ry,0deg)) scale(var(--sc,1));
+ transition:transform .68s cubic-bezier(.2,.7,.2,1),opacity .5s,filter .5s,border-color .35s,box-shadow .35s;
+ filter:brightness(calc(1 - var(--abs)*.10));
+ box-shadow:0 16px 36px -18px #09152a66,0 4px 10px #09152a16;
+ cursor:pointer;backface-visibility:hidden;
+}
+.project-track>.card:hover{border-color:var(--accent)}
+.project-track>.card.is-active{filter:none;border-color:color-mix(in srgb,var(--accent) 55%,var(--line));box-shadow:0 32px 56px -28px #09152a88,0 6px 22px #09152a18}
+.project-track>.card .cover{aspect-ratio:16/9;width:100%;min-height:0;flex-shrink:0}
+.project-track>.card .cbody{padding:16px 19px 20px;gap:7px;min-height:0}
+.project-track>.card .cbody h3{font-size:1.22rem;line-height:1.2}
+.project-track>.card .cbody p{font-size:13px;line-height:1.5;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.project-track>.card .tag{font-size:10px;padding:3px 7px}
+.project-track>.card .more{font-size:12px}
+.project-track>.card:not(.is-active) .more{opacity:.55}
+.project-controls{display:flex;align-items:center;justify-content:center;gap:22px;margin:0 auto 6px}
+.project-arrow{width:46px;height:46px;display:grid;place-items:center;border:1px solid var(--line);border-radius:50%;background:var(--surface);font-size:26px;transition:background .2s,color .2s,border-color .2s}
+.project-arrow:hover{background:var(--ink);color:#fff;border-color:var(--ink)}
+.project-arrow:focus-visible,.project-dots button:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.project-pager{display:flex;align-items:center;flex-direction:column;gap:10px;min-width:160px}
+.project-count{font:500 12px var(--mono);color:var(--muted);font-variant-numeric:tabular-nums}
+.project-dots{display:flex;justify-content:center;align-items:center;flex-wrap:wrap;gap:7px}
+.project-dots button{width:8px;height:8px;border-radius:99px;background:var(--line);transition:width .25s,background .25s}
+.project-dots button.on{width:25px;background:var(--accent)}
+.project-hint{text-align:center;font-size:12px;color:var(--muted);margin-top:16px}
+@media(max-width:800px){.project-stage{height:480px}.project-track>.card{width:min(64vw,350px);height:385px;}}
+@media(max-width:620px){.project-stage{height:445px;perspective:900px}.project-track>.card{width:min(72vw,325px);height:370px;}.project-track>.card .cbody{padding:13px 15px}.project-track>.card .cbody h3{font-size:1.1rem}.project-track>.card .tags{max-height:42px;overflow:hidden}.project-hint{font-size:11px;padding-inline:12px}}
+@media(prefers-reduced-motion:reduce){.project-track>.card,.project-dots button{transition:none}}
+@media print{.project-stage{height:auto;overflow:visible;perspective:none}.project-track{position:static;display:grid;grid-template-columns:repeat(2,1fr);gap:16px}.project-track>.card{position:static!important;transform:none!important;width:auto;height:auto;opacity:1!important;visibility:visible!important;filter:none}.project-controls,.project-hint{display:none}}
