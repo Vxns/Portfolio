@@ -124,6 +124,7 @@ header.nav{position:sticky;top:0;z-index:30;background:color-mix(in oklab,var(--
 .tags{display:flex;flex-wrap:wrap;gap:6px}
 .tag{padding:3px 10px;border-radius:999px;background:var(--accent-soft);color:var(--accent-ink);font:500 12px var(--mono)}
 
+/* 3D-Coverflow wird in separater CSS-Datei gestaltet. */
 /* Labor */
 .labs{display:grid;gap:12px}
 details.lab{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);transition:border-color .2s}
@@ -262,6 +263,7 @@ table.spec td:last-child{font-weight:600}
 @media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}.status i,.chipf,.pcap i,.die{animation:none}.pulse{animation:none;opacity:0}html{scroll-behavior:auto}}
 @media print{header.nav,.btn,.chipf,.marq,.xh,.scopebox{display:none}section{padding:28px 0}.rv{opacity:1;transform:none}}
 </style>
+<link rel="stylesheet" href="coverflow.css">
 </head>
 <body>
 
@@ -310,7 +312,17 @@ table.spec td:last-child{font-weight:600}
 
 <section id="projekte" style="padding-top:0"><div class="wrap">
   <div class="sec-head"><div class="eyebrow">02 · Projekte</div><h2 class="title">Ausgewählte Arbeiten (Beispiele)</h2></div>
-  <div class="grid" id="projects"></div>
+  <div class="project-carousel" aria-label="Projektübersicht">
+    <div class="project-stage" id="projectStage" tabindex="0" role="region" aria-roledescription="Karussell" aria-label="3D-Projektcarousel. Pfeiltasten zum Wechseln.">
+      <div class="project-track" id="projects"></div>
+    </div>
+    <div class="project-controls">
+      <button class="project-arrow" id="projectPrev" type="button" aria-label="Vorheriges Projekt">&#8249;</button>
+      <div class="project-pager"><span class="project-count" id="projectCount" aria-live="polite"></span><div class="project-dots" id="projectDots" aria-label="Projekt auswählen"></div></div>
+      <button class="project-arrow" id="projectNext" type="button" aria-label="Nächstes Projekt">&#8250;</button>
+    </div>
+    <p class="project-hint">Karte auswählen oder mit den Pfeiltasten navigieren · Klick auf die mittlere Karte öffnet die Details</p>
+  </div>
 </div></section>
 
 <section id="labor" style="padding-top:0"><div class="wrap">
@@ -430,13 +442,77 @@ const dots='<svg viewBox="0 0 400 250" preserveAspectRatio="xMidYMid slice" fill
 $("projects").innerHTML=PROJEKTE.map((p,i)=>{
   const first=p.highlight&&i===0;
   const img=(p.bilder&&p.bilder[0])?'<img loading="lazy" src="'+esc(p.bilder[0].src)+'" alt="" onerror="this.remove()">':"";
-  return '<button class="card rv'+(first?" big":"")+'" data-i="'+i+'">'+
+  return '<button class="card rv'+(first?" featured":"")+'" data-i="'+i+'" aria-label="Projekt '+(i+1)+' von '+PROJEKTE.length+': '+esc(p.titel)+'">'+
    '<div class="cover"><div class="gen">'+dots+'<b>'+pad(i+1)+'</b></div>'+img+'<span class="badge">'+esc(p.bereich)+'</span></div>'+
    '<div class="cbody"><div class="meta"><span>P-'+pad(i+1)+'</span><span>'+esc(p.jahr)+'</span></div>'+
    '<h3>'+esc(p.titel)+'</h3><p>'+esc(p.kurz||p.text)+'</p>'+
    '<div class="tags">'+(p.tags||[]).map(t=>'<span class="tag">'+esc(t)+'</span>').join("")+'</div>'+
    '<span class="more">Details ansehen →</span></div></button>';
 }).join("");
+
+/* Coverflow: echter perspektivischer Tiefeneffekt, umlaufend. */
+(function(){
+  const stage=$("projectStage"),track=$("projects"),cards=[...track.querySelectorAll(".card")];
+  const prev=$("projectPrev"),next=$("projectNext"),count=$("projectCount"),dots=$("projectDots");
+  const n=cards.length;
+  if(!n){count.textContent="Keine Projekte";prev.disabled=next.disabled=true;return;}
+  let selected=0,startX=null,startY=null;
+  const wrap=i=>(i%n+n)%n;
+  dots.innerHTML=cards.map((_,i)=>'<button type="button" aria-label="Projekt '+(i+1)+' auswählen" data-slide="'+i+'"></button>').join("");
+  const dotButtons=[...dots.children];
+  function render(){
+    const compact=matchMedia("(max-width:620px)").matches;
+    cards.forEach((card,i)=>{
+      let delta=i-selected;
+      if(delta>n/2)delta-=n;
+      if(delta< -n/2)delta+=n;
+      const abs=Math.abs(delta),sign=Math.sign(delta);
+      card.style.setProperty("--pos",String(delta));
+      card.style.setProperty("--abs",String(abs));
+      card.style.setProperty("--side",String(sign));
+      const mobile=matchMedia("(max-width:620px)").matches;
+      const tablet=matchMedia("(max-width:800px)").matches;
+      const spacing=mobile?stage.clientWidth*.48:tablet?stage.clientWidth*.31:Math.min(stage.clientWidth*.28,270);
+      card.style.setProperty("--tx",(delta*spacing)+"px");
+      card.style.setProperty("--tz",(-abs*(mobile?125:tablet?100:105))+"px");
+      card.style.setProperty("--ry",(sign*(mobile?-61:tablet?-55:-53))+"deg");
+      card.style.setProperty("--sc",String(1-abs*(mobile||tablet?.09:.075)));
+      card.style.zIndex=String(100-Math.round(abs));
+      card.style.opacity=abs> (compact?2:3)?"0":"1";
+      card.style.visibility=abs> (compact?2:3)?"hidden":"visible";
+      card.style.pointerEvents=abs> (compact?2:3)?"none":"auto";
+      card.classList.toggle("is-active",i===selected);
+      card.setAttribute("aria-current",i===selected?"true":"false");
+      card.setAttribute("tabindex",i===selected?"0":"-1");
+    });
+    count.textContent=String(selected+1).padStart(2,"0")+" / "+String(n).padStart(2,"0");
+    dotButtons.forEach((dot,i)=>{dot.classList.toggle("on",i===selected);dot.setAttribute("aria-current",i===selected?"true":"false")});
+  }
+  function go(i){selected=wrap(i);render()}
+  prev.addEventListener("click",()=>go(selected-1));
+  next.addEventListener("click",()=>go(selected+1));
+  dots.addEventListener("click",e=>{const d=e.target.closest("[data-slide]");if(d)go(+d.dataset.slide)});
+  stage.addEventListener("keydown",e=>{
+    if(e.key==="ArrowRight"||e.key==="ArrowLeft"){
+      e.preventDefault();go(selected+(e.key==="ArrowRight"?1:-1));
+    }
+  });
+  stage.addEventListener("pointerdown",e=>{if(e.pointerType==="mouse"&&e.button!==0)return;startX=e.clientX;startY=e.clientY});
+  stage.addEventListener("pointerup",e=>{
+    if(startX===null)return;
+    const dx=e.clientX-startX,dy=e.clientY-startY;startX=null;
+    if(Math.abs(dx)>45&&Math.abs(dx)>Math.abs(dy)*1.2){stage.dataset.swiped="1";go(selected+(dx<0?1:-1));setTimeout(()=>delete stage.dataset.swiped,100)}
+  });
+  stage.addEventListener("pointercancel",()=>{startX=null});
+  // Die bestehende Detail-Dialog-Funktion bleibt erhalten.
+  track.addEventListener("click",e=>{
+    const card=e.target.closest(".card");if(!card)return;
+    const index=+card.dataset.i;
+    if(stage.dataset.swiped||index!==selected){e.stopImmediatePropagation();if(!stage.dataset.swiped)go(index)}
+  },true);
+  addEventListener("resize",render);
+  render();
+})();
 
 const dlg=$("dlg");
 $("projects").addEventListener("click",e=>{
